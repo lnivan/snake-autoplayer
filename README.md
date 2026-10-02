@@ -59,7 +59,7 @@ Open the game first, so that its board covers screen pixels (1244, 98) to (1743,
 
 - **Alternating.** One lap of route A followed by one lap of route B is queued whenever the queue runs empty. Each skipped corner is therefore visited every second lap, so an apple anywhere is reached within two laps (240 moves). The two routes differ only in columns 9 and 10. Stepping through the alternation offline shows that a snake of up to 118 cells never runs into its own body.
 
-- **Opening.** The game starts with a three-cell snake in row 5 with its head at (4, 5). A nine-step lead-in goes up column 4 and left along row 0 to (0, 0), where the first lap begins.
+- **Opening.** The bot assumes the game starts with a three-cell snake in row 5, cells (2, 5) to (4, 5), with its head at (4, 5). A nine-step lead-in goes up column 4 and left along row 0 to (0, 0), where the first lap begins.
 
 - **Unused search code.** `encontrarCamino` ("find path") is a breadth-first search from the head to the apple that treats the body as walls. `encontrarCamino2` lets the tail shorten as the path grows, so after $k$ moves the $k$ body cells nearest the tail no longer block. `encontrarCamino3` falls back to one safe step at a time when the apple is out of reach, and `encontrarManzana` ("find apple") scans the board for red. The active loop calls none of them; the loop that did is commented out.
 
