@@ -8,7 +8,6 @@
 ![pyKey](https://img.shields.io/badge/pyKey-30363D?style=flat-square)
 ![Pillow](https://img.shields.io/badge/Pillow-30363D?style=flat-square)
 ![Status](https://img.shields.io/badge/status-prototype-BF8700?style=flat-square)
-![Year](https://img.shields.io/badge/year-2023-8250DF?style=flat-square)
 
 </div>
 
@@ -78,10 +77,6 @@ Open the game first, so that its board covers screen pixels (1244, 98) to (1743,
 - The waiting loop grabs screenshots as fast as it can, so it keeps one CPU core busy, and the console prints on every step.
 - `encontrarCamino` and `encontrarCamino2` loop forever when no path to the apple exists, and the random fallback in `encontrarManzana` takes its x and y from two independently chosen free cells, so the result can be a cell occupied by the snake.
 - In `serpienteRecursiva.py` the screenshot is taken once, before the loop, so it prints the same map forever.
-
-## Background
-
-Written in or before June 2023; the files come from a code backup made that month and were put under version control in 2026. `experiments/` holds the earlier stage, where the screen calibration went through several values before settling on the one the bot uses.
 
 ---
 
