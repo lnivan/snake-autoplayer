@@ -57,7 +57,7 @@ Open the game first, so that its board covers screen pixels (1244, 98) to (1743,
   > ^ > ^ > ^ > ^ > ^ x       > ^ > ^ > ^ > ^ > > ^
   ```
 
-- **Alternating.** One lap of route A followed by one lap of route B is queued whenever the queue runs empty. Each skipped corner is therefore visited every second lap, so an apple anywhere is reached within two laps (240 moves). The two routes differ only in columns 9 and 10. Stepping through the alternation offline shows that a snake of up to 118 cells never runs into its own body.
+- **Alternating.** One lap of route A followed by one lap of route B is queued whenever the queue runs empty. Each skipped corner is therefore visited every second lap, so an apple anywhere is reached within two laps (240 moves). The two routes differ only in columns 9 and 10. Stepping through the alternation offline shows that a snake of up to 118 cells never runs into its own body (117 if the game checks for a collision before the tail cell is freed).
 
 - **Opening.** The bot assumes the game starts with a three-cell snake in row 5, cells (2, 5) to (4, 5), with its head at (4, 5). A nine-step lead-in goes up column 4 and left along row 0 to (0, 0), where the first lap begins.
 
@@ -74,9 +74,9 @@ Open the game first, so that its board covers screen pixels (1244, 98) to (1743,
 ## Limitations
 
 - The screen position, cell size and colours are hard-coded for one monitor, browser zoom and game. Any other setup needs new numbers in the source.
-- The bot cannot win: the alternating routes are safe only up to 118 cells, three short of a full board. Ignoring the apple also makes it slow, up to two laps per apple.
+- The bot cannot win: the alternating routes are safe only up to 118 cells (117 if the tail cell is not freed first), three short of a full board. Ignoring the apple also makes it slow, up to two laps per apple.
 - The waiting loop grabs screenshots as fast as it can, so it keeps one CPU core busy, and the console prints on every step.
-- `encontrarCamino` and `encontrarCamino2` loop forever when no path to the apple exists, and the random fallback in `encontrarManzana` takes its x and y from two different free cells.
+- `encontrarCamino` and `encontrarCamino2` loop forever when no path to the apple exists, and the random fallback in `encontrarManzana` takes its x and y from two independently chosen free cells, so the result can be a cell occupied by the snake.
 - In `serpienteRecursiva.py` the screenshot is taken once, before the loop, so it prints the same map forever.
 
 ## Background
